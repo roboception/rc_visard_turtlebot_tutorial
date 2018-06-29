@@ -4,7 +4,7 @@
   <node pkg="nodelet" type="nodelet" name="rc_visard_manager" args="manager"/>
 
   <!-- rc_visard driver -->
-  <arg name="device" default="00_14_2d_2c_d5_19"/>
+  <arg name="device" default="rc_visard"/>
   <node pkg="nodelet" type="nodelet" name="rc_visard_driver" 
         args="load rc_visard_driver rc_visard_manager" output="screen">
     <param name="device" value="$(arg device)"/>
