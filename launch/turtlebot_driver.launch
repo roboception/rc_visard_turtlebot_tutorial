@@ -9,14 +9,14 @@
 
   <param name="/use_sim_time" value="$(arg simulation)"/>
 
-  <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find rc_applebot_demo)/robots/kobuki_hexagons_rc_visard_160.urdf.xacro'"/>
+  <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find rc_visard_turtlebot_tutorial)/robots/kobuki_hexagons_rc_visard_160.urdf.xacro'"/>
   <param name="robot_description" command="$(arg urdf_file)"/>
 
 
-  <!-- important generally, but specifically utilised by the current app manager -->  
+  <!-- important generally, but specifically utilised by the current app manager -->
   <param name="robot/name" value="$(optenv ROBOT turtlebot)"/>
   <param name="robot/type" value="turtlebot"/>
-  
+
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="5.0" />
   </node>
@@ -24,11 +24,11 @@
     <rosparam command="load" file="$(find turtlebot_bringup)/param/$(arg base)/diagnostics.yaml" />
   </node>
 
-  <include file="$(find rc_applebot_demo)/launch/mobile_base.launch">
+  <include file="$(find rc_visard_turtlebot_tutorial)/launch/mobile_base.launch">
     <arg name="base" value="$(arg base)" />
     <arg name="serialport" value="$(arg serialport)" />
   </include>
- 
+
 </launch>
 
 

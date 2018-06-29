@@ -5,7 +5,7 @@
 
   <!-- rc_visard driver -->
   <arg name="device" default="rc_visard"/>
-  <node pkg="nodelet" type="nodelet" name="rc_visard_driver" 
+  <node pkg="nodelet" type="nodelet" name="rc_visard_driver"
         args="load rc_visard_driver rc_visard_manager" output="screen">
     <param name="device" value="$(arg device)"/>
     <param name="enable_tf" value="true"/>
@@ -15,7 +15,7 @@
   </node>
 
   <!-- Turtlebot driver -->
-  <include file="$(find rc_applebot_demo)/launch/turtlebot_driver.launch">
+  <include file="$(find rc_visard_turtlebot_tutorial)/launch/turtlebot_driver.launch">
     <arg name="3d_sensor" value="rc_visard_160"/>
   </include>
 
@@ -43,7 +43,7 @@
   </node>
 
   <!-- Move base -->
-  <arg name="custom_param_file" default="$(find rc_applebot_demo)/cfg/rc_visard_costmap_params.yaml"/>
+  <arg name="custom_param_file" default="$(find rc_visard_turtlebot_tutorial)/cfg/rc_visard_costmap_params.yaml"/>
   <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml">
     <arg name="custom_param_file" value="$(arg custom_param_file)"/>
     <arg name="odom_frame_id" value="map"/>
@@ -59,6 +59,6 @@
   <node pkg="tf" type="static_transform_publisher" name="map_world" args="0 0 0.310 0 0 0 1 map world 100"/>
 
    <!-- Rviz -->
-  <node pkg="rviz" type="rviz" name="rviz_nav" output="screen" respawn="false" args="-d $(find rc_applebot_demo)/cfg/navigation_app.rviz"/>
+  <node pkg="rviz" type="rviz" name="rviz_nav" output="screen" respawn="false" args="-d $(find rc_visard_turtlebot_tutorial)/cfg/navigation_app.rviz"/>
 
 </launch>
