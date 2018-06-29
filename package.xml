@@ -1,0 +1,28 @@
+<package format="2">
+  <name>rc_visard_turtlebot_tutorial</name>
+  <version>1.0.0</version>
+  <description>Tutorial code for showcasing Roboception's rc_visard with 3D SLAM and turtlebot</description>
+  <maintainer email="monika.florek-jasinska@roboception.de">Monika Florek-Jasinska</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://wiki.ros.org/rc_visard/Tutorials/NavigationWithTurtlebot</url>
+  <url type="repository">https://github.com/roboception/rc_visard_turtlebot_tutorial</url>
+  <url type="bugtracker">https://github.com/roboception/rc_visard_turtlebot_tutorial/issues</url>
+
+  <author>Monika Florek-Jasinska</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <depend>tf</depend>
+
+  <exec_depend>rc_visard_driver</exec_depend>
+  <exec_depend>turtlebot_bringup</exec_depend>
+  <exec_depend>move_base</exec_depend>
+  <exec_depend>octomap_server</exec_depend>
+  <exec_depend>pointcloud_to_laserscan</exec_depend>
+
+  <export>
+
+  </export>
+</package>

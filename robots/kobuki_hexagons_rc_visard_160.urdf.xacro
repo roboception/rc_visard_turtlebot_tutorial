@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+    - Base      : kobuki
+    - Stacks    : hexagons
+    - 3d Sensor : kinect
+-->    
+<robot name="turtlebot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find turtlebot_description)/urdf/turtlebot_common_library.urdf.xacro" />
+  <xacro:include filename="$(find kobuki_description)/urdf/kobuki.urdf.xacro" />
+  <xacro:include filename="$(find turtlebot_description)/urdf/stacks/hexagons.urdf.xacro"/>
+  <xacro:include filename="$(find rc_visard_description)/urdf/rc_visard_160.xacro"/>
+  
+  <kobuki/>
+  <stack_hexagons parent="base_link"/>
+  <link name="camera_mounting"/>
+  <joint name="camera_mounting_to_turtlebot" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_mounting"/>
+    <origin xyz = "0.125 0 0.190" />
+
+  </joint>
+
+  <xacro:rc_160 prefix="rc_visard_left_" parent="camera_mounting">
+    <origin xyz="0.05 0.08 0.113" rpy="-1.906 -0.022 -1.571" />
+
+  </xacro:rc_160>
+</robot>

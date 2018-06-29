@@ -1,0 +1,22 @@
+<launch>
+        <node pkg="octomap_server" type="octomap_server_node" name="octomap_server">
+                <param name="resolution" value="0.10" />
+
+                <!-- fixed map frame (rc_visard uses "world") -->
+                <param name="frame_id" type="string" value="world" />
+
+                <!-- maximum range to integrate (speedup and less noise) -->
+                <param name="sensor_model/max_range" value="3.0" />
+                <param name="sensor_model/miss" value="0.2" />
+
+                <!-- data source to integrate (PointCloud2) -->
+                <remap from="cloud_in" to="/stereo/points2" />
+
+                <!-- Filter ground and ceiling -->
+                <param name="pointcloud_max_z" value="0.20" />
+                <param name="pointcloud_min_z" value="-0.20" />
+
+        </node>
+</launch>
+
+

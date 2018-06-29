@@ -1,0 +1,64 @@
+<launch>
+
+  <!-- Nodelet manager -->
+  <node pkg="nodelet" type="nodelet" name="rc_visard_manager" args="manager"/>
+
+  <!-- rc_visard driver -->
+  <arg name="device" default="00_14_2d_2c_d5_19"/>
+  <node pkg="nodelet" type="nodelet" name="rc_visard_driver" 
+        args="load rc_visard_driver rc_visard_manager" output="screen">
+    <param name="device" value="$(arg device)"/>
+    <param name="enable_tf" value="true"/>
+    <param name="autostart_dynamics_with_slam" value="true"/>
+    <param name="autostop_dynamics" value="true"/>
+    <param name="ptp_enabled" value="true"/>
+  </node>
+
+  <!-- Turtlebot driver -->
+  <include file="$(find rc_applebot_demo)/launch/turtlebot_driver.launch">
+    <arg name="3d_sensor" value="rc_visard_160"/>
+  </include>
+
+  <!-- Octomap server -->
+  <arg name="mapfile" default="$(env TURTLEBOT_MAP_FILE)"/>
+  <node pkg="octomap_server" type="octomap_server_node" name="octomap_server" required="true" args="$(arg mapfile)" output="screen">
+     <param name="latch" type="bool" value="true" />
+     <param name="frame_id" type="string" value="map" />
+     <remap from="/stereo/points2" to="/ignore"/>
+     <remap from="/stereo/confidence" to="/ignore"/>
+     <remap from="projected_map" to="map"/>
+  </node>
+
+  <!-- Laserscan -->
+  <!-- This uses lazy subscribing, so will not activate until scan is requested -->
+  <node pkg="nodelet" type="nodelet" name="pointcloud_to_laserscan" output="screen"
+        args="load pointcloud_to_laserscan/pointcloud_to_laserscan_nodelet rc_visard_manager">
+     <param name="range_min" value="0.5"/>
+     <param name="range_max" value="50"/>
+     <param name="min_height" value="-0.1"/>
+     <param name="max_height" value="0.6"/>
+     <param name="target_frame" value="camera_mounting"/>
+     <remap from="cloud_in" to="/stereo/points2"/>
+     <remap from="scan" to="scan"/>
+  </node>
+
+  <!-- Move base -->
+  <arg name="custom_param_file" default="$(find rc_applebot_demo)/cfg/rc_visard_costmap_params.yaml"/>
+  <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml">
+    <arg name="custom_param_file" value="$(arg custom_param_file)"/>
+    <arg name="odom_frame_id" value="map"/>
+    <arg name="global_frame_id" value="map"/>
+    <arg name="odom_topic" value="dynamics"/>
+    <arg name="laser_topic" value="scan"/>
+  </include>
+
+  <!-- Static transform publishers -->
+  <!-- Hardcoded values. These values can be obtained via rosrun tf tf_echo rc_visard_left_camera base_footprint -->
+  <node pkg="tf" type="static_transform_publisher" name="camera_base" args="0.073, 0.364, -0.058 0.581, -0.572, 0.416, 0.403  camera base_footprint 100"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="map_world" args="0 0 0.310 0 0 0 1 map world 100"/>
+
+   <!-- Rviz -->
+  <node pkg="rviz" type="rviz" name="rviz_nav" output="screen" respawn="false" args="-d $(find rc_applebot_demo)/cfg/navigation_app.rviz"/>
+
+</launch>
