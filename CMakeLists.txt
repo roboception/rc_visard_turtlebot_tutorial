@@ -34,6 +34,7 @@ install(FILES
 install(FILES
   scripts/reset_slam_and_load_map.py
   scripts/save_trajectory_as_tf.py
+  scripts/pose_to_tf.py
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/scripts
 )
 

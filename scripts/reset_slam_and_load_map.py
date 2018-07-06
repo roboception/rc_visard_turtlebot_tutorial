@@ -17,9 +17,9 @@ def main():
 
     # set up services we need
     stop_slam = rospy.ServiceProxy(service_ns + '/dynamics_stop_slam', Trigger)
-    reset_slam = rospy.ServiceProxy(service_ns + '/dynamics_reset_slam', Trigger)
     start_slam = rospy.ServiceProxy(service_ns + '/dynamics_start_slam', Trigger)
-    load_map = rospy.ServiceProxy(service_ns + '/load_map', Trigger)
+    reset_slam = rospy.ServiceProxy(service_ns + '/slam_reset', Trigger)
+    load_map = rospy.ServiceProxy(service_ns + '/slam_load_map', Trigger)
 
     # wait until everthing is available
     rospy.wait_for_service(service_ns + '/dynamics_stop_slam')
@@ -27,10 +27,15 @@ def main():
     try:
         # first we reset slam (in case it was already running)
         print("stopping SLAM")
-        response = stop_slam()
+        for i in range(5):
+            response = stop_slam()
+            if not response.success:
+                print("failed to stop SLAM ({}/5): {}".format(i+1,response.message))
+                time.sleep(5)
+            else:
+                break
         if not response.success:
-            print("failed to stop SLAM: %s" % response.message)
-            sys.exit(1)
+                sys.exit(1)
 
         print("resetting SLAM")
         response = reset_slam()

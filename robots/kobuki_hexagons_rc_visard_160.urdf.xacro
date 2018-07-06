@@ -17,12 +17,12 @@
   <joint name="camera_mounting_to_turtlebot" type="fixed">
     <parent link="base_link"/>
     <child link="camera_mounting"/>
-    <origin xyz = "0.125 0 0.190" />
+    <origin xyz = "0.07 0 0.190" />
 
   </joint>
 
   <xacro:rc_160 prefix="rc_visard_left_" parent="camera_mounting">
-    <origin xyz="0.05 0.08 0.113" rpy="-1.906 -0.022 -1.571" />
+    <origin xyz="0.05 0.08 0.113" rpy="-1.799 -0.012 -1.571" />
 
   </xacro:rc_160>
 </robot>

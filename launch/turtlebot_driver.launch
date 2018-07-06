@@ -24,11 +24,11 @@
     <rosparam command="load" file="$(find turtlebot_bringup)/param/$(arg base)/diagnostics.yaml" />
   </node>
 
-  <include file="$(find rc_visard_turtlebot_tutorial)/launch/mobile_base.launch">
+  <include file="$(find turtlebot_bringup)/launch/includes/mobile_base.launch.xml">
     <arg name="base" value="$(arg base)" />
     <arg name="serialport" value="$(arg serialport)" />
   </include>
-
+ 
 </launch>
 
 
