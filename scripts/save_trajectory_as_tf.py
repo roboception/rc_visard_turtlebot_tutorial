@@ -10,7 +10,7 @@ from __future__ import print_function
 
 import sys
 import rospy
-from rc_msgs.srv import GetTrajectory
+from rc_visard_driver.srv import GetTrajectory
 from nav_msgs.msg import Path
 import tf2_msgs.msg
 import geometry_msgs.msg
@@ -78,7 +78,7 @@ def trajectory_msg_to_tf_bag(outbag, child_frame, trajectory_msg, first_stamp, l
 
 
 def main():
-    service_name = '/rc_visard_driver/get_trajectory'
+    service_name = '/rc_visard_driver/slam_get_trajectory'
 
     if len(sys.argv) == 1 or sys.argv[1] == "-h" or sys.argv[1] == "--help":
         print("Usage:", sys.argv[0], "input.bag output.bag")
