@@ -17,8 +17,18 @@
   <depend>tf</depend>
 
   <exec_depend>rc_visard_driver</exec_depend>
-  <exec_depend>turtlebot_bringup</exec_depend>
-  <exec_depend>turtlebot_navigation</exec_depend>
+  <!-- <exec_depend>urdf</exec_depend> -->
+  <exec_depend>ecl_streams</exec_depend>
+  <exec_depend>ecl_geometry</exec_depend>
+  <exec_depend>kobuki_msgs</exec_depend>
+  <exec_depend>kobuki_dock-drive</exec_depend>
+  <exec_depend>kobuki_driver</exec_depend>
+  <!-- <exec_depend>joy</exec_depend> -->
+  <exec_depend>yocs_cmd_vel_mux</exec_depend>
+  <exec_depend>yocs_joyop</exec_depend>
+  <exec_depend>yocs_controllers</exec_depend>
+  <exec_depend>yocs_velocity_smoother</exec_depend>
+  <exec_depend>dwa_local_planner</exec_depend>
   <exec_depend>move_base</exec_depend>
   <exec_depend>octomap_server</exec_depend>
   <exec_depend>pointcloud_to_laserscan</exec_depend>
