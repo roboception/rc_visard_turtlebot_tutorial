@@ -1,8 +1,7 @@
 #!/usr/bin/env sh
 
-cd /home/$USER/
-mkdir -p turtlebot_ws/src
-cd turtlebot_ws/src
+mkdir -p /turtlebot_ws/src
+cd /turtlebot_ws/src
 # copied from turtlebot2_to_melodic repository: https://github.com/gaunthan/Turtlebot2-On-Melodic
 ### 
 git clone https://github.com/turtlebot/turtlebot.git
@@ -25,10 +24,8 @@ rm -rf yujin_ocs
 
 # get laptop_battery_monitor-package
 git clone https://github.com/ros-drivers/linux_peripheral_interfaces.git
-cd linux_peripheral_interface
+cd linux_peripheral_interfaces
 rm -rf libsensors_monitor
 rm -rf linux_peripheral_interfaces
 
-cd /home/$USER/turtlebot_ws
-catkin build
-source turtlebot_ws/devel/setup.bash
+cd /turtlebot_ws
