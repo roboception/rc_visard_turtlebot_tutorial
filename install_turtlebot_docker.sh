@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-mkdir -p /turtlebot_ws/src
 cd /turtlebot_ws/src
 # copied from turtlebot2_to_melodic repository: https://github.com/gaunthan/Turtlebot2-On-Melodic
 ### 
