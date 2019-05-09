@@ -18,7 +18,7 @@
   <depend>ecl_streams</depend>
   <depend>ecl_geometry</depend>
   <depend>kobuki_msgs</depend>
-  <depend>kobuki_dock-drive</depend>
+  <depend>kobuki_dock_drive</depend>
   <depend>kobuki_driver</depend>
   <depend>yocs_cmd_vel_mux</depend>
   <depend>yocs_joyop</depend>
