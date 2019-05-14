@@ -1,8 +1,10 @@
-#!/usr/bin/env sh
+#!/bin/bash 
 
 cd /home/$USER/
 mkdir -p turtlebot_ws/src
-cd turtlebot_ws/src
+cd turtlebot_ws
+catkin config --init --install
+cd src
 # copied from turtlebot2_to_melodic repository: https://github.com/gaunthan/Turtlebot2-On-Melodic
 ### 
 git clone https://github.com/turtlebot/turtlebot.git
@@ -30,5 +32,6 @@ rm -rf libsensors_monitor
 rm -rf linux_peripheral_interfaces
 
 cd /home/$USER/turtlebot_ws
+rosdep update && rosdep install --from-paths src/rc_visard_turtlebot_tutorial
 catkin build
-source turtlebot_ws/devel/setup.bash
+source install/setup.bash
