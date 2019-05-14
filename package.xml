@@ -29,6 +29,7 @@
   <!-- <exec_depend>joy</exec_depend> -->
   <!-- <exec_depend>urdf</exec_depend> -->
   <exec_depend>rc_visard_driver</exec_depend>
+  <exec_depend>rc_visard_description</exec_depend>
   <exec_depend>move_base</exec_depend>
   <exec_depend>octomap_server</exec_depend>
   <exec_depend>pointcloud_to_laserscan</exec_depend>
