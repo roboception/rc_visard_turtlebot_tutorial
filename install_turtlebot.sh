@@ -1,10 +1,10 @@
 #!/bin/bash 
 
 mkdir -p /home/$USER/turtlebot_ws/src
-mv . /home/$USER/turtlebot_ws/src
 cd /home/$USER/turtlebot_ws
 catkin config --init --install
 cd src
+mv /home/$USER/rc_visard_turtlebot_tutorial /home/$USER/turtlebot_ws/src
 
 # get turlebot packages
 git clone https://github.com/turtlebot/turtlebot.git                               
@@ -20,7 +20,7 @@ rm -rf libsensors_monitor
 rm -rf linux_peripheral_interfaces
 
 cd /home/$USER/turtlebot_ws
-rosdep update && rosdep install --from-paths src/rc_visard_turtlebot_tutorial
+rosdep update && rosdep install --from-paths src/rc_visard_turtlebot_tutorial -y
 catkin build
 source install/setup.bash
 chmod +x install/share/rc_visard_turtlebot_tutorial/scripts/*
