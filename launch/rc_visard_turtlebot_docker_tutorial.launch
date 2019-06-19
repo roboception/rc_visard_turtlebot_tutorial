@@ -61,7 +61,5 @@
 
   <node pkg="rc_visard_turtlebot_tutorial" type="pose_to_tf.py" name="cam_2_map" args="-p camera -c world -i --input_topic /pose"/>
 
-   <!-- Rviz -->
-  /* <node pkg="rviz" type="rviz" name="rviz_nav" output="screen" respawn="false" args="-d $(find rc_visard_turtlebot_tutorial)/cfg/navigation_app.rviz"/> */
   <node pkg="rc_visard_turtlebot_tutorial" type="reset_slam_and_load_map.py" name="localization" output="screen"/>
 </launch>
