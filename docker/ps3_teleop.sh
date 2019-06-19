@@ -7,4 +7,4 @@ docker run --rm \
 	-v $(pwd)/map:/map:rw \
 	--network host \
 	turtlebot_image \
-	roslaunch turtlebot_teleop ps3_teleop.launch
+	roslaunch rc_visard_turtlebot_tutorial ps3_teleop.launch

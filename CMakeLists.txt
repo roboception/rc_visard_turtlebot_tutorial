@@ -16,6 +16,7 @@ install(FILES
   launch/turtlebot_driver.launch
   launch/rc_visard_turtlebot_tutorial.launch
   launch/rc_visard_turtlebot_docker_tutorial.launch
+  launch/ps3_teleop.launch
   launch/octomap_mapping.launch
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
 )
