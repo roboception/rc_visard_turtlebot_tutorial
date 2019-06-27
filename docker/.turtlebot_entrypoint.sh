@@ -2,5 +2,5 @@
 set -e
 
 # setup ros environment
-source "/turtlebot_ws/install/setup.bash"
+source "/turtlebot_ws/devel/setup.bash"
 exec "$@"
