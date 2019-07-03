@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-cd ..
+cd $ROS_WORKSPACE
 
 # get turtlebot and kobuki packages
 git clone https://github.com/turtlebot/turtlebot.git -b kinetic
