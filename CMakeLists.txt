@@ -38,10 +38,6 @@ install(FILES
   scripts/reset_slam_and_load_map.py
   scripts/save_trajectory_as_tf.py
   scripts/pose_to_tf.py
-  docker/ps3_teleop.sh
-  docker/run_script.sh
-  docker/start_rc_visard.sh
-  docker/turtlebot_launch.sh
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/scripts
 )
 
