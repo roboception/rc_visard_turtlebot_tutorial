@@ -3,7 +3,7 @@ MAINTAINER Jan-Niklas Blind <jan-niklas.blind@roboception.de>
 
 RUN mkdir -p /turtlebot_ws/src 
 
-RUN git clone -b v1.0.0-melodic https://github.com/roboception/rc_visard_turtlebot_tutorial.git  /turtlebot_ws/src/rc_visard_turtlebot_tutorial
+RUN git clone -b v1.0.1-melodic https://github.com/roboception/rc_visard_turtlebot_tutorial.git  /turtlebot_ws/src/rc_visard_turtlebot_tutorial
 
 RUN cd /turtlebot_ws/src/rc_visard_turtlebot_tutorial/docker && \
 	./.install_turtlebot_docker.sh && \                                                     
